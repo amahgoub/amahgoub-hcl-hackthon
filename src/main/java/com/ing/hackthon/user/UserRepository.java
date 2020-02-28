@@ -1,4 +1,4 @@
-package com.ing.hackthon.userStatistics;
+package com.ing.hackthon.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

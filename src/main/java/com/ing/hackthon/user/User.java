@@ -1,4 +1,4 @@
-package com.ing.hackthon.userStatistics;
+package com.ing.hackthon.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+/**
+ * Entity for the user domain object
+ */
 @Entity
 @Table(name="user")
 public class User {

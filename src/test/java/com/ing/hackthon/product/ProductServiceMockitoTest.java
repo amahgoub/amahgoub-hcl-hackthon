@@ -2,6 +2,7 @@ package com.ing.hackthon.product;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -14,7 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ing.hackthon.userStatistics.User;
+import com.ing.hackthon.exceptions.InvalidProductException;
+import com.ing.hackthon.productGroup.ProductGroup;
+import com.ing.hackthon.productGroup.ProductGroupRepository;
+import com.ing.hackthon.user.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -37,12 +41,16 @@ public class ProductServiceMockitoTest {
 				new ProductGroup(2, "morkage")
 				));
 		
-		assertNotNull(productService.getAllProductGroups());
-		assertEquals("This method tests the size of the returned product groups list", 2, productService.getAllProductGroups().size());
-		
-		// Testing the DTO conversion
-		assertEquals("This method tests the id of the first product group", 1, productService.getAllProductGroups().get(0).getId());
-		assertEquals("This method tests the name of the first product group", "saving", productService.getAllProductGroups().get(0).getName());
+		try {
+			assertNotNull(productService.getAllProductGroups());
+			assertEquals("This method tests the size of the returned product groups list", 2, productService.getAllProductGroups().size());
+			
+			// Testing the DTO conversion
+			assertEquals("This method tests the id of the first product group", 1, productService.getAllProductGroups().get(0).getId());
+			assertEquals("This method tests the name of the first product group", "saving", productService.getAllProductGroups().get(0).getName());
+		} catch (InvalidProductException e) {
+			fail();
+		}
 		
 	}
 	
@@ -51,14 +59,18 @@ public class ProductServiceMockitoTest {
 		
 		when(productRepository.findByUserId(1)).thenReturn(getMockedProducts());
 		
-		assertNotNull(productService.getProducts(1));
-		assertEquals("This method tests the size of the returned product groups list", 3, productService.getProducts(1).size());
-		
-		// Testing the DTO conversion
-		assertEquals("This method tests the id of the first product group", 1, productService.getProducts(1).get(0).getId());
-		assertEquals("This method tests the name of the first product group", "orange", productService.getProducts(1).get(0).getName());
-		assertEquals("This method tests the userName of the first product group", "test", productService.getProducts(1).get(0).getUserName());
-		assertEquals("This method tests the groupName of the first product group", "saving", productService.getProducts(1).get(0).getGroupName());
+		try {
+			assertNotNull(productService.getProducts(1));
+			assertEquals("This method tests the size of the returned product groups list", 3, productService.getProducts(1).size());
+			
+			// Testing the DTO conversion
+			assertEquals("This method tests the id of the first product group", 1, productService.getProducts(1).get(0).getId());
+			assertEquals("This method tests the name of the first product group", "orange", productService.getProducts(1).get(0).getName());
+			assertEquals("This method tests the userName of the first product group", "test", productService.getProducts(1).get(0).getUserName());
+			assertEquals("This method tests the groupName of the first product group", "saving", productService.getProducts(1).get(0).getGroupName());
+		} catch (InvalidProductException e) {
+			fail();
+		}
 
 	}
 	

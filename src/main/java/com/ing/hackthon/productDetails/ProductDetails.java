@@ -11,6 +11,9 @@ import javax.persistence.Table;
 
 import com.ing.hackthon.product.Product;
 
+/**
+ * Entity for the product details domain object
+ */
 @Entity
 @Table(name="product_details")
 public class ProductDetails {

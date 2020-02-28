@@ -1,5 +1,8 @@
-package com.ing.hackthon.userStatistics;
+package com.ing.hackthon.user;
 
+/**
+ * Data Transfer Object for users 
+ */
 public class UserDTO {
 
     private int id;

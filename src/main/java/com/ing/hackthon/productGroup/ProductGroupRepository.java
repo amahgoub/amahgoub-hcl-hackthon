@@ -1,4 +1,4 @@
-package com.ing.hackthon.product;
+package com.ing.hackthon.productGroup;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

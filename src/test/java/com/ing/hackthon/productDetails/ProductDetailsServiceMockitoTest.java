@@ -2,6 +2,7 @@ package com.ing.hackthon.productDetails;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ing.hackthon.exceptions.InvalidProductException;
 import com.ing.hackthon.product.Product;
 
 @RunWith(SpringRunner.class)
@@ -32,14 +34,18 @@ public class ProductDetailsServiceMockitoTest {
 		Product product = new Product(1,"orange", 1, 1);
 		when(productDetailsRepository.findByProductId(1)).thenReturn(getMockedProductDetails(product));
 		
-		assertNotNull(productDetailsService.getProductDetails(1));
-		assertEquals("This method tests the size of the returned product details list", 1, productDetailsService.getProductDetails(1).size());
-		
-		// Testing the DTO conversion
-		assertEquals("This method tests the id of the first product details", 1, productDetailsService.getProductDetails(1).get(0).getId());
-		assertEquals("This method tests the account of the first product details", "NL21INGB1234567801", productDetailsService.getProductDetails(1).get(0).getAccount());
-		assertEquals("This method tests the balance of the first product details", 12.12, productDetailsService.getProductDetails(1).get(0).getBalance(), 0.0);
-		assertEquals("This method tests the product Name of the first product details", "orange", productDetailsService.getProductDetails(1).get(0).getProductName());
+		try {
+			assertNotNull(productDetailsService.getProductDetails(1));
+			assertEquals("This method tests the size of the returned product details list", 1, productDetailsService.getProductDetails(1).size());
+			
+			// Testing the DTO conversion
+			assertEquals("This method tests the id of the first product details", 1, productDetailsService.getProductDetails(1).get(0).getId());
+			assertEquals("This method tests the account of the first product details", "NL21INGB1234567801", productDetailsService.getProductDetails(1).get(0).getAccount());
+			assertEquals("This method tests the balance of the first product details", 12.12, productDetailsService.getProductDetails(1).get(0).getBalance(), 0.0);
+			assertEquals("This method tests the product Name of the first product details", "orange", productDetailsService.getProductDetails(1).get(0).getProductName());
+		} catch (InvalidProductException e) {
+			fail();
+		}
 				
 	}
 	

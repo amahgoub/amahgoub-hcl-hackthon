@@ -9,7 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.ing.hackthon.userStatistics.User;
+import com.ing.hackthon.productGroup.ProductGroup;
+import com.ing.hackthon.user.User;
 
 /**
  * Entity class for holding the product information

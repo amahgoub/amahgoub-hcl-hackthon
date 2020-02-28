@@ -1,5 +1,8 @@
-package com.ing.hackthon.product;
+package com.ing.hackthon.productGroup;
 
+/** 
+ * Data Transfer Object for product groups
+ */
 public class ProductGroupDTO {
 
     private int id;

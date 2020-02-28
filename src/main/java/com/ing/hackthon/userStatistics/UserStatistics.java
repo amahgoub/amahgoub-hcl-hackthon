@@ -6,6 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.ing.hackthon.user.User;
+
+/**
+ * Entity for the user statistics domain object
+ */
 @Entity
 public class UserStatistics {
 

@@ -1,5 +1,8 @@
 package com.ing.hackthon.productDetails;
 
+/**
+ * Data Transfer Object for product details 
+ */
 public class ProductDetailsDTO {
 
     private int id;

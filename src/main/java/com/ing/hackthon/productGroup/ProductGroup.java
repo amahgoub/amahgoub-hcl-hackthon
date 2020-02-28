@@ -1,4 +1,4 @@
-package com.ing.hackthon.product;
+package com.ing.hackthon.productGroup;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity for the product group domain object
+ */
 @Entity
 @Table(name="product_group")
 public class ProductGroup {
