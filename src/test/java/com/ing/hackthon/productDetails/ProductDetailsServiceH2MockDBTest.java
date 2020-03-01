@@ -31,9 +31,9 @@ public class ProductDetailsServiceH2MockDBTest {
 			
 			// Testing the DTO conversion
 			assertEquals("This method tests the id of the first product details", 1, productDetailsService.getProductDetails(1).get(0).getId());
-			assertEquals("This method tests the account of the first product details", "NL21INGB1234567890", productDetailsService.getProductDetails(1).get(0).getAccount());
-			assertEquals("This method tests the balance of the first product details", 3456.0, productDetailsService.getProductDetails(1).get(0).getBalance(), 0.0);
-			assertEquals("This method tests the product Name of the first product details", "Orange savings accountssss", productDetailsService.getProductDetails(1).get(0).getProductName());
+			assertEquals("This method tests the account of the first product details", "NL21INGB1234567001", productDetailsService.getProductDetails(1).get(0).getAccount());
+			assertEquals("This method tests the balance of the first product details", 1201.0, productDetailsService.getProductDetails(1).get(0).getBalance(), 0.0);
+			assertEquals("This method tests the product Name of the first product details", "mock Orange savings account", productDetailsService.getProductDetails(1).get(0).getProductName());
 		} catch (InvalidProductException e) {
 			fail();
 		}
